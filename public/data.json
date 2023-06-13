@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "MD UMAIR",
+        "email": "umair",
+        "password": "123",
+        "Todos": [
+            {
+                "id": 1,
+                "task": "GO STUDY"
+            }
+        ]
+    }
+]
