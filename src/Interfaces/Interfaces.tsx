@@ -1,20 +1,20 @@
-export type TodoContextType = {
-    todos: ITodo[];
-    saveTodo: (todo: ITodo) => void;
-    updateTodo: (id: number) => void;
-};
-
 export interface ITodo {
     id: number;
-    title: string;
-    description: string;
-    status: boolean;
+    task: string
+}
+
+export interface IMainTodo {
+    id: number;
+    task: string
+    subtask: ITodo[]
 }
 
 export type LoginContextType = {
     user: IuserData | null
     isLoggedIn: boolean
-    setIsLoggedIn: (value:boolean) => void;
+    tasks: IMainTodo[] | null
+    setTasks: (tasks: IMainTodo[]) => void
+    setIsLoggedIn: (value: boolean) => void;
     login: (userData: IuserData) => void;
     logout: () => void;
 };

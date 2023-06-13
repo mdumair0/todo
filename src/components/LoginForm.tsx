@@ -2,6 +2,7 @@ import { useState, useContext, FormEvent, useEffect } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { LoginContextType, IuserData } from '../Interfaces/Interfaces';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [username, setUsername] = useState<string>('');
@@ -18,6 +19,7 @@ const LoginForm = () => {
       login(loggedUser)
       setUsername(loggedUser.email)
       setPassword(loggedUser.password)
+      
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -55,7 +57,7 @@ const LoginForm = () => {
     }
   };
 
-  return (
+  const loginPage = (
     <div className="bg-gradient-to-r flex justify-center items-center from-pink-500 to-blue-500 h-screen">
       <div className="bg-white flex justify-center  w-3/6 h-4/6 gap-4 place-content-center">
         <div className="grid grid-cols-1 flex justify-center w-3/6 gap-4 place-content-center">
@@ -84,6 +86,12 @@ const LoginForm = () => {
         </div>
       </div>
     </div>
+  )
+
+  return (
+    <>
+    {!isLoggedIn ? loginPage : <Navigate to="/dashboard"/>}
+    </>
   );
 };
 

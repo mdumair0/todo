@@ -7,7 +7,17 @@
         "Todos": [
             {
                 "id": 1,
-                "task": "GO STUDY"
+                "task": "GO STUDY",
+                "subtask": [
+                    {
+                        "id":1,
+                        "task": "Study Math"
+                    },
+                    {
+                        "id":2,
+                        "task": "Study English"
+                    }
+                ]
             }
         ]
     }

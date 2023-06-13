@@ -1,11 +1,13 @@
 import React, { createContext, useState } from 'react';
-import { LoginContextType, IuserData } from '../Interfaces/Interfaces'
+import { LoginContextType, IuserData, IMainTodo } from '../Interfaces/Interfaces'
+import { isUndefined } from 'util';
 
 export const AuthContext = createContext<LoginContextType | null>(null)
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<IuserData | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [tasks, setTasks] = useState<IMainTodo[] | null>(JSON.parse(localStorage.getItem('authToken')!)?.Todos || null);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!(localStorage.getItem('authToken')));
 
   const login = (userData: IuserData) => {
     setUser(userData);
@@ -17,8 +19,10 @@ export const AuthProvider = ({ children }: any) => {
     setUser(null);
   };
 
+  const value = { user, isLoggedIn, tasks, setTasks, setIsLoggedIn, login, logout }
+
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn, setIsLoggedIn, login, logout }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
