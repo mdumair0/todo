@@ -12,13 +12,11 @@ interface ICreateBox {
 }
 
 const CreateBox:React.FC<ICreateBox> = ({Tasks, display, create, setDisplay, taskType}) => {
-    const { user, isLoggedIn, tasks, editTasks , idCreateOpen, setIdCreateOpen, setTasks } = useContext(AuthContext) as LoginContextType;
+    const {editForm} = useContext(AuthContext) as LoginContextType;
 
     const [newTask, setNewTask] = useState('')
     const uniqueId: string = uuidv4();
 
-    console.log(tasks, editTasks )
-    
 
     const handleAddTask = (event:any) => {
         event?.preventDefault()
@@ -30,7 +28,7 @@ const CreateBox:React.FC<ICreateBox> = ({Tasks, display, create, setDisplay, tas
     }
 
     return (
-        <div className={`${!display && 'hidden'} sticky bottom-0 bg-white flex flex-col border rounded p-2 px-4 `}>
+        <div className={`${((editForm?.taskType === 'Sub Task' || editForm?.taskType === 'Task') && display) ? '' : 'hidden'} sticky bottom-0 bg-white flex flex-col border rounded p-2 px-4 `}>
             <div className="flex flex-col pt-2 px-4 ">
                 <form onSubmit={handleAddTask}>
                     <input 

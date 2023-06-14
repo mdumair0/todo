@@ -4,14 +4,12 @@ import { AuthContext } from "../contexts/AuthContext";
 
 import TaskList from "./TaskList";
 import axios from "axios"
-import CreateBox from "./CreateBox";
+import CreateBox from "./CreateForm";
 
 const LoginForm = () => {
-    const { user, isLoggedIn, tasks, idCreateOpen, setIdCreateOpen, setTasks } = useContext(AuthContext) as LoginContextType;
-    const display = idCreateOpen === 'EditTask'
-    console.log(idCreateOpen)
+    const { user, isLoggedIn, tasks, editForm, setEditForm, setTasks } = useContext(AuthContext) as LoginContextType;
+    const display = editForm?.id === 'display'
 
-    // Mocking GET request
     useEffect(() => {
         if (isLoggedIn) {
             axios
@@ -30,11 +28,11 @@ const LoginForm = () => {
         <div className="flex bg-white rounded drop-shadow-lg flex-col md:m-12 w-5/6 max-h-full overflow-y-auto relative">
             <div className="flex justify-between bg-red-100 md:px-8 p-3 sticky top-0">
                 <div className="text-xl font-bold">Tasks To Do</div>
-                <div className="px-4 p-1 font-bold cursor-pointer rounded-lg bg-red-200 shadow-lg" onClick={()=>setIdCreateOpen('display')}>Create Task</div>
+                <div className="px-4 p-1 font-bold cursor-pointer rounded-lg bg-red-200 shadow-lg" onClick={()=>setEditForm({id:'display',taskType:'Task'})}>Create Task</div>
             </div>
             {tasks?.map((ele, it) => <TaskList key={it} Task={ele} />)}
             
-            <CreateBox create={setTasks} Tasks={tasks!} display={display} setDisplay={setIdCreateOpen} taskType={"Task"}  />
+            <CreateBox create={setTasks} Tasks={tasks!} display={display} setDisplay={setEditForm} taskType={editForm?.taskType!}  />
         </div>
     </div>
     );

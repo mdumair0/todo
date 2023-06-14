@@ -1,14 +1,13 @@
 import React, { createContext, useState } from 'react';
-import { LoginContextType, IuserData, IMainTodo } from '../Interfaces/Interfaces'
+import { LoginContextType, IuserData, IMainTodo, ICreateBox } from '../Interfaces/Interfaces'
 
 export const AuthContext = createContext<LoginContextType | null>(null)
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<IuserData | null>(JSON.parse(localStorage.getItem('authToken')!) || null);
-  const [tasks, setTasks] = useState<IMainTodo[] | null>(JSON.parse(localStorage.getItem('authToken')!)?.Todos || null); 
-  const [editTasks, setEditTasks] = useState(''); 
   const [isLoggedIn, setIsLoggedIn] = useState(!!(localStorage.getItem('authToken')));
-  const [idCreateOpen, setIdCreateOpen] = useState('')
+  const [tasks, setTasks] = useState<IMainTodo[] | null>(JSON.parse(localStorage.getItem('authToken')!)?.Todos || null); 
+  const [editForm, setEditForm] = useState<ICreateBox | null>(null)
 
   const login = (userData: IuserData) => {
     setUser(userData);
@@ -39,7 +38,7 @@ export const AuthProvider = ({ children }: any) => {
     setTasks(newTasks!)
   }
 
-  const value = { user, isLoggedIn, tasks, idCreateOpen, editTasks, setEditTasks, editTask, setIdCreateOpen, addTask, deleteTask, setTasks, setIsLoggedIn, login, logout }
+  const value = { user, isLoggedIn, tasks, editForm, editTask, setEditForm, addTask, deleteTask, setTasks, setIsLoggedIn, login, logout }
 
   return (
     <AuthContext.Provider value={value}>

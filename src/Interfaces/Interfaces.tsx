@@ -9,14 +9,17 @@ export interface IMainTodo {
     subtask?: ITodo[]
 }
 
+export interface ICreateBox {
+    id: string
+    taskType: string
+}
+
 export type LoginContextType = {
     user: IuserData | null
     isLoggedIn: boolean
     tasks: IMainTodo[] | null
-    idCreateOpen: string
-    editTasks: string
-    setEditTasks: (id:string) => void
-    setIdCreateOpen: (id:string) => void
+    editForm: ICreateBox | null
+    setEditForm: (CreateBox:ICreateBox) => void
     addTask: (tasks: IMainTodo) => void
     editTask: (tasks: IMainTodo) => void
     deleteTask: (id: any) => void
