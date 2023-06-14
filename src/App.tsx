@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { AuthContext, AuthProvider } from './contexts/AuthContext';
+import { Routes, Route } from "react-router-dom";
+import { AuthContext } from './contexts/AuthContext';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoutes';
@@ -13,17 +13,14 @@ function App() {
     <>
       <div className='bg-gradient-to-r flex flex-col from-pink-500 to-blue-500 h-screen'>
         <div>
+          <div className='flex flex-row m-5'>
+            <h1 className='flex w-60 md:w-0 md:pr-20 grow justify-center text-xl md:text-5xl text-white drop-shadow-lg font-bold'>To Do App</h1>
+          </div>
           { isLoggedIn ?
-            <div className='flex flex-row m-5'>
-              <div className='m-2 bg-white p-2 px-6 font-bold rounded-lg drop-shadow-lg'>User: {user?.name}</div>
-              <h1 className='flex pr-20 grow justify-center text-5xl text-white drop-shadow-lg font-bold'>To Do App</h1>
-              <div className='m-2 bg-white p-2 px-6 font-bold rounded-lg drop-shadow-lg cursor-pointer' onClick={()=>logout()}>logout</div>
-            </div> :
-            <div className='flex flex-row m-5'>
-              <h1 className='flex grow justify-center text-5xl text-white drop-shadow-lg font-bold'>To Do App</h1>
-            </div>
-          }
-
+            <div className="flex mx-5 md:mx-32 lg:32 justify-between">
+              <div className="flex m-2 bg-white pt-2 px-4 md:px-6 font-bold rounded-lg drop-shadow-lg">User: {user?.name}</div>
+              <div className="flex m-2 bg-white pt-2 px-4 md:px-6 h-10 font-bold rounded-lg drop-shadow-lg cursor-pointer ml-auto" onClick={() => logout()}>logout</div>
+            </div> : '' }
         </div>
         <Routes>
           <Route path="/" element={<LoginForm />} />

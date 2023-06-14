@@ -8,7 +8,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [alert, setAlert] = useState<string>('');
-  const { user, isLoggedIn, login, logout, setIsLoggedIn } = useContext(AuthContext) as LoginContextType;
+  const { isLoggedIn, login, logout, setIsLoggedIn } = useContext(AuthContext) as LoginContextType;
   console.log(isLoggedIn)
 
   // Check if user is already logged In (localStorage)

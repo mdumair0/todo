@@ -1,18 +1,25 @@
 export interface ITodo {
-    id: number;
+    id: string;
     task: string
 }
 
 export interface IMainTodo {
-    id: number;
+    id: string;
     task: string
-    subtask: ITodo[]
+    subtask?: ITodo[]
 }
 
 export type LoginContextType = {
     user: IuserData | null
     isLoggedIn: boolean
     tasks: IMainTodo[] | null
+    idCreateOpen: string
+    editTasks: string
+    setEditTasks: (id:string) => void
+    setIdCreateOpen: (id:string) => void
+    addTask: (tasks: IMainTodo) => void
+    editTask: (tasks: IMainTodo) => void
+    deleteTask: (id: any) => void
     setTasks: (tasks: IMainTodo[]) => void
     setIsLoggedIn: (value: boolean) => void;
     login: (userData: IuserData) => void;

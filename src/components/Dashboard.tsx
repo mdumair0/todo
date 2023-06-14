@@ -1,11 +1,17 @@
 import { useContext, useEffect } from "react";
-import { IMainTodo, IuserData, LoginContextType } from "../Interfaces/Interfaces";
+import { IuserData, LoginContextType } from "../Interfaces/Interfaces";
 import { AuthContext } from "../contexts/AuthContext";
+
+import TaskList from "./TaskList";
 import axios from "axios"
+import CreateBox from "./CreateBox";
 
 const LoginForm = () => {
-    const { user, isLoggedIn, tasks, setTasks, login, logout, setIsLoggedIn } = useContext(AuthContext) as LoginContextType;
-    let Todos: IMainTodo[] = []
+    const { user, isLoggedIn, tasks, idCreateOpen, setIdCreateOpen, setTasks } = useContext(AuthContext) as LoginContextType;
+    const display = idCreateOpen === 'EditTask'
+    console.log(idCreateOpen)
+
+    // Mocking GET request
     useEffect(() => {
         if (isLoggedIn) {
             axios
@@ -14,19 +20,21 @@ const LoginForm = () => {
                     let loguser = res.data.find((ele: IuserData) => (ele.email === user?.email))
                     let { Todos }  = loguser
                     setTasks(Todos)
-                    setTasks(Todos)
-                    console.log("Todos",Todos)
                 })
                 .catch((err) => console.log(err));
         }
-      }, [])
+      }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-    <div className="bg-gradient-to-r flex justify-center items-center from-pink-500 to-blue-500 h-screen">
-        <div className="bg-white flex justify-center  w-5/6 h-4/6 gap-4 place-content-center">
-            <div className="grid grid-cols-1 flex justify-center w-3/6 gap-4 place-content-center">
-                {tasks?.map(ele => ele.task)}
+    <div className="bg-gradient-to-r flex justify-center items-center from-pink-500 to-blue-500 max-h-full overflow-hidden">
+        <div className="flex bg-white rounded drop-shadow-lg flex-col md:m-12 w-5/6 max-h-full overflow-y-auto relative">
+            <div className="flex justify-between bg-red-100 md:px-8 p-3 sticky top-0">
+                <div className="text-xl font-bold">Tasks To Do</div>
+                <div className="px-4 p-1 font-bold cursor-pointer rounded-lg bg-red-200 shadow-lg" onClick={()=>setIdCreateOpen('display')}>Create Task</div>
             </div>
+            {tasks?.map((ele, it) => <TaskList key={it} Task={ele} />)}
+            
+            <CreateBox create={setTasks} Tasks={tasks!} display={display} setDisplay={setIdCreateOpen} taskType={"Task"}  />
         </div>
     </div>
     );

@@ -9,6 +9,27 @@
                 "id": 1,
                 "task": "GO STUDY",
                 "subtask": [
+                    
+                ]
+            },
+            {
+                "id": 2,
+                "task": "GO SLEEP",
+                "subtask": [
+                    {
+                        "id":1,
+                        "task": "Study Math"
+                    },
+                    {
+                        "id":2,
+                        "task": "Study English"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "task": "GO WALK",
+                "subtask": [
                     {
                         "id":1,
                         "task": "Study Math"
