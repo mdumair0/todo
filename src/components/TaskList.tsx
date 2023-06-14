@@ -14,19 +14,9 @@ const TaskList: React.FC<ITaskList> = ({Task}) => {
     const { tasks, editForm, editTask, setEditForm, deleteTask } = useContext(AuthContext) as LoginContextType;
     const [hover, setHover] = useState(true);
     const [toggleSubtasks, setToggleSubtasks] = useState(false);
-    const [subTasks, setSubTasks] = useState(Task?.subtask)
+    const [subTasks, setSubTasks] = useState(Task?.subtask || [])
     const display = Task?.id === editForm?.id
-
-    if (!Task?.subtask) {
-        tasks?.map(ele => {
-            if (ele.id === Task?.id) {
-                ele.subtask = []
-                return ele
-            }
-            return ele
-        })
-    }
-
+        
     const handleDeleteTask = (id:any) => {
         deleteTask(id)
     }
