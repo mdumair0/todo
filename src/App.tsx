@@ -14,7 +14,7 @@ function App() {
       <div className='bg-gradient-to-r flex flex-col from-pink-500 to-blue-500 h-screen'>
         <div>
           <div className='flex flex-row m-5'>
-            <h1 className='flex w-60 md:w-0 md:pr-20 grow justify-center text-xl md:text-5xl text-white drop-shadow-lg font-bold'>To Do App</h1>
+            <h1 className='flex w-60 mt-20 md:mt-10 md:w-0 md:pr-20 grow justify-center text-3xl md:text-5xl text-white drop-shadow-lg font-bold'>To Do App</h1>
           </div>
           { isLoggedIn ?
             <div className="flex mx-5 md:mx-32 lg:32 justify-between">

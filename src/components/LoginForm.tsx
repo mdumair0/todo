@@ -59,8 +59,8 @@ const LoginForm = () => {
 
   const loginPage = (
     <div className="bg-gradient-to-r flex justify-center items-center from-pink-500 to-blue-500 h-screen">
-      <div className="bg-white flex justify-center  w-3/6 h-4/6 gap-4 place-content-center">
-        <div className="grid grid-cols-1 flex justify-center w-3/6 gap-4 place-content-center">
+      <div className="bg-white flex justify-center mx-8 w-full md:w-3/6 h-4/6 gap-4 place-content-center">
+        <div className="grid grid-cols-1 flex justify-center mx-8 w-full md:w-3/6 gap-4 place-content-center">
           <form className="flex flex-col" onSubmit={handleLogin} >
             <label className="mx-auto text-4xl">LOGIN</label>
             <div className='mx-2 mt-8 text-left text-sm font-bold text-red-500'>
@@ -69,14 +69,14 @@ const LoginForm = () => {
             <input
               className="bg-slate-200 w-full h-10 m-2 mb-8 p-5 rounded"
               type="text"
-              placeholder="Username"
+              placeholder="Username: user1 or user2"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
               className="bg-slate-200 w-full h-10 m-2 mb-8 p-5 rounded"
               type="password"
-              placeholder="Password"
+              placeholder="Password: 123"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
