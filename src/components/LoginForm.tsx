@@ -41,10 +41,9 @@ const LoginForm = () => {
         .get("/data.json")
         .then((res) => {
           let user = res.data.find((ele: IuserData) => (ele.email === username))
-          setUsername('')
           setPassword('')
-          if (!user) { setAlert('User Not Found') }
-          else if (user && (user.password !== password)) { setAlert('Wrong Password') }
+          if (!user) { setAlert('User Not Found'); setUsername('') }
+          else if (user && (user.password !== password)) { setAlert('Wrong Password'); setPassword('') }
           else if (user && (user.password === password)) {
             console.log("LoggedIn User: ", user);
             localStorage.setItem('authToken', JSON.stringify(user))
@@ -58,8 +57,8 @@ const LoginForm = () => {
   };
 
   const loginPage = (
-    <div className="bg-gradient-to-r flex justify-center items-center from-pink-500 to-blue-500 h-screen">
-      <div className="bg-white flex justify-center mx-8 w-full md:w-3/6 h-4/6 gap-4 place-content-center">
+    <div className="bg-gradient-to-l flex justify-center items-center from-blue-300 to-blue-900 h-screen">
+      <div className=" flex justify-center mx-8 w-full md:w-3/6 h-4/6 gap-4 place-content-center">
         <div className="grid grid-cols-1 flex justify-center mx-8 w-full md:w-3/6 gap-4 place-content-center">
           <form className="flex flex-col" onSubmit={handleLogin} >
             <label className="mx-auto text-4xl">LOGIN</label>

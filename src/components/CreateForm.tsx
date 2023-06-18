@@ -9,9 +9,10 @@ interface ICreateBox {
     display: boolean
     setDisplay: Function
     taskType: string
+    setToggleSubtasks: Function
 }
 
-const CreateBox:React.FC<ICreateBox> = ({Tasks, display, create, setDisplay, taskType}) => {
+const CreateBox:React.FC<ICreateBox> = ({Tasks, display, create, setDisplay, taskType, setToggleSubtasks}) => {
     const {editForm} = useContext(AuthContext) as LoginContextType;
 
     const [newTask, setNewTask] = useState('')
@@ -25,6 +26,9 @@ const CreateBox:React.FC<ICreateBox> = ({Tasks, display, create, setDisplay, tas
             task: newTask
         }])
         setNewTask('')
+        if (taskType === 'Sub Task') {
+            setToggleSubtasks(true)
+        }
     }
 
     return (

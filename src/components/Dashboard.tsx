@@ -24,15 +24,15 @@ const LoginForm = () => {
       }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-    <div className="bg-gradient-to-r flex justify-center items-center from-pink-500 to-blue-500 max-h-full overflow-hidden">
-        <div className="flex bg-white rounded drop-shadow-lg flex-col md:m-12 w-5/6 max-h-full overflow-y-auto relative">
+    <div className="bg-gradient-to-l flex justify-center items-center from-blue-300 to-blue-900 max-h-full overflow-hidden">
+        <div className="flex rounded drop-shadow-lg flex-col md:m-12 w-5/6 max-h-full overflow-y-auto relative">
             <div className="flex justify-between bg-red-100 md:px-8 p-3 sticky top-0">
                 <div className="text-xl font-bold">Tasks To Do</div>
-                <div className="px-4 p-1 font-bold cursor-pointer rounded-lg bg-red-200 shadow-lg" onClick={()=>setEditForm({id:'display',taskType:'Task'})}>Create Task</div>
+                <div className="px-4 p-1 font-bold cursor-pointer rounded-lg bg-red-200 drop-shadow-lg" onClick={()=>setEditForm({id:'display',taskType:'Task'})}>Create Task</div>
             </div>
             {tasks?.map((ele, it) => <TaskList key={it} Task={ele} />)}
             
-            <CreateBox create={setTasks} Tasks={tasks!} display={display} setDisplay={setEditForm} taskType={editForm?.taskType!}  />
+            <CreateBox create={setTasks} Tasks={tasks!} display={display} setDisplay={setEditForm} taskType={editForm?.taskType!} setToggleSubtasks={()=>{}} />
         </div>
     </div>
     );
