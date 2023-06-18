@@ -58,9 +58,9 @@ const LoginForm = () => {
 
   const loginPage = (
     <div className="bg-gradient-to-l flex justify-center items-center from-blue-300 to-blue-900 h-screen">
-      <div className=" flex justify-center mx-8 w-full md:w-3/6 h-4/6 gap-4 place-content-center">
+      <div className=" flex justify-center bg-white mx-8 w-full md:w-3/6 h-5/6 gap-4 place-content-center">
         <div className="grid grid-cols-1 flex justify-center mx-8 w-full md:w-3/6 gap-4 place-content-center">
-          <form className="flex flex-col" onSubmit={handleLogin} >
+          <form className="flex flex-col gap-4" onSubmit={handleLogin} >
             <label className="mx-auto text-4xl">LOGIN</label>
             <div className='mx-2 mt-8 text-left text-sm font-bold text-red-500'>
               {alert ? `*${alert}`: ''}
