@@ -46,7 +46,7 @@ const TaskList: React.FC<ITaskList> = ({Task}) => {
 
     return (
         <>
-        <div className={`flex flex-col bg-green-200 md:mx-8 m-2`}>
+        <div className={`flex flex-col md:mx-8 m-2`}>
             <div className="flex justify-between"  onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(true)}>
                 <div className="flex p-1 cursor-pointer" onClick={toggleDropdown}>
                     <div className="cursor-pointer pl-2 w-6 pl-2 h-6 mr-3 text-white bg-blue-500 rounded-full" > {subTasks?.length} </div>

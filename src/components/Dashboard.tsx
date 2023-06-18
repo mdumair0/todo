@@ -25,7 +25,7 @@ const LoginForm = () => {
 
     return (
     <div className="bg-gradient-to-l flex justify-center items-center from-blue-300 to-blue-900 max-h-full overflow-hidden">
-        <div className="flex rounded drop-shadow-lg flex-col md:m-12 w-5/6 max-h-full overflow-y-auto relative">
+        <div className="flex rounded bg-white drop-shadow-lg flex-col md:m-12 w-5/6 max-h-full overflow-y-auto relative">
             <div className="flex justify-between bg-red-100 md:px-8 p-3 sticky top-0">
                 <div className="text-xl font-bold">Tasks To Do</div>
                 <div className="px-4 p-1 font-bold cursor-pointer rounded-lg bg-red-200 drop-shadow-lg" onClick={()=>setEditForm({id:'display',taskType:'Task'})}>Create Task</div>
